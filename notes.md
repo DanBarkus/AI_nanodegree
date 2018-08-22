@@ -131,3 +131,81 @@ Weights (edges)
 Bias (node)
 
 Linear equation into step function
+
+#### And Perceptron
+
+Both inputs must be true
+
+turn truth table into 1 and 0 table
+
+### Linear EQ
+
+to move line closer to point
+
+3x<sub>1</sub> + 4x<sub>2</sub> -10 = 0
+
+point is (4,5)
+
+subtract point from constants of line eq
+
+3 | 4 | -10
+
+4 | 5 | 1
+
+-1| -1| -11
+
+Learning rate is multiplier for outcome, result subtracted from line
+
+if prediction is 0
+
+add alpha
+
+if prediction is 1 
+
+subtract alpha
+
+### Continuous Predictions
+
+sigmoid(x) = 1/(1+e<sup>-x</sup>)
+
+#### Softmax Fucntion
+
+e<sup>Z<sub>i</sub></sup>/(e<sup>Z<sub>1</sub></sup>+e<sup>Z<sub>2</sub></sup>+e<sup>Z<sub>n</sub></sup>)
+
+#### Probability
+
+Probability = outcome_prob<sub>1</sub> * outcome_prob<sub>2</sub> * outcome_prob<sub>n</sub>
+
+#### Cross Entropy
+
+-ln(e<sub>1</sub>)-ln(e<sub>2</sub>)-ln(e<sub>3</sub>)
+
+y = outcome (1 or 0)
+
+ŷ = probability (0 - 1)
+
+e = error (-ln(ŷ) if y=1 or -lm(1-ŷ) if y = 0)
+
+cross entropy = y<sub>i</sub>ln(p<sub>i</sub>)+(1-y<sub>i</sub>)ln(1-p<sub>i</sub>)
+
+lower number is better
+
+#### Logistic Regression
+
+Error Function
+
+Error = -(1-y)(ln(1-ŷ))-yln(ŷ)
+
+$E(W,b) = - \frac{1}{m} \sum_{i=1}^{m} (1-y_i)ln(1-sigmoid(Wx^{(i)}+b)+y_iln(sigmoid(Wx^{(i)}+b))$
+
+### Gradient Descent
+
+$o^{\prime}(x) = o(x)(1-o(x))$
+
+$E =  - \frac{1}{m} \sum_{i=1}^{m} (y_iln(\hat{y_i})+(1-y_i)ln(1-\hat{y_i}))$
+
+$\hat{y_i} = o(Wx^{(i)}+b)$
+
+$E = -yln(\hat{y})-(1-y)ln(1-\hat{y})$
+
+$\hat{y}(1-\hat{y})*x_j$
