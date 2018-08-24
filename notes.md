@@ -169,7 +169,7 @@ subtract alpha
 sigmoid(x) = 1/(1+e<sup>-x</sup>)
 ```
 def sigmoid(x):
-  return 1 / (1 + math.exp(-x))
+  return 1 / (1 + np.exp(-x))
 ```
 
 #### Softmax Fucntion
