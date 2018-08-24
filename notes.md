@@ -167,6 +167,10 @@ subtract alpha
 ### Continuous Predictions
 
 sigmoid(x) = 1/(1+e<sup>-x</sup>)
+```
+def sigmoid(x):
+  return 1 / (1 + math.exp(-x))
+```
 
 #### Softmax Fucntion
 
@@ -176,27 +180,45 @@ e<sup>Z<sub>i</sub></sup>/(e<sup>Z<sub>1</sub></sup>+e<sup>Z<sub>2</sub></sup>+e
 
 Probability = outcome_prob<sub>1</sub> * outcome_prob<sub>2</sub> * outcome_prob<sub>n</sub>
 
+prediction formula
+```
+def output_formula(features, weights, bias):
+    return sigmoid(np.dot(features, weights) + bias)
+```
+
 #### Cross Entropy
 
 -ln(e<sub>1</sub>)-ln(e<sub>2</sub>)-ln(e<sub>3</sub>)
 
 y = outcome (1 or 0)
 
-ŷ = probability (0 - 1)
+ŷ = probability (0 to 1)
+
+#### Error Formula / Logistic Regression
 
 e = error (-ln(ŷ) if y=1 or -lm(1-ŷ) if y = 0)
+
+```
+def error_formula(y, output):
+    return - y*np.log(output) - (1 - y) * np.log(1-output)
+```
 
 cross entropy = y<sub>i</sub>ln(p<sub>i</sub>)+(1-y<sub>i</sub>)ln(1-p<sub>i</sub>)
 
 lower number is better
 
-#### Logistic Regression
-
-Error Function
-
-Error = -(1-y)(ln(1-ŷ))-yln(ŷ)
+#### Weight and Bias update formula
 
 $E(W,b) = - \frac{1}{m} \sum_{i=1}^{m} (1-y_i)ln(1-sigmoid(Wx^{(i)}+b)+y_iln(sigmoid(Wx^{(i)}+b))$
+
+```
+def update_weights(x, y, weights, bias, learnrate):
+    output = output_formula(x, weights, bias)
+    d_error = -(y - output)
+    weights -= learnrate * d_error * x
+    bias -= learnrate * d_error
+    return weights, bias
+```
 
 ### Gradient Descent
 
@@ -206,6 +228,8 @@ $E =  - \frac{1}{m} \sum_{i=1}^{m} (y_iln(\hat{y_i})+(1-y_i)ln(1-\hat{y_i}))$
 
 $\hat{y_i} = o(Wx^{(i)}+b)$
 
-$E = -yln(\hat{y})-(1-y)ln(1-\hat{y})$
+$VE = -yln(\hat{y})-(1-y)ln(1-\hat{y})$
 
 $\hat{y}(1-\hat{y})*x_j$
+
+$VE = -(y-\hat{y})(x_1,\dots,x_n,1)$
