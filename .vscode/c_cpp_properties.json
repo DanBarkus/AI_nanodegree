@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:\\Users\\danie\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\samd\\1.2.8\\**"
+            ],
+            "forcedInclude": [
+                "C:\\Users\\danie\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\samd\\1.2.8\\cores\\arduino\\Arduino.h"
+            ]
+        }
+    ]
+}
